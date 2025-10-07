@@ -147,6 +147,8 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 16,
+    backgroundColor: 'white',
+    color: '#333',
   },
   suggestionsContainer: {
     backgroundColor: 'white',

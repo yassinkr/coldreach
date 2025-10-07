@@ -44,4 +44,18 @@ export const storageService = {
       return [];
     }
   },
+  async updateCallLog(updatedLog: CallLog): Promise<void> {
+    try {
+      const logs = await this.getCallLogs();
+      const logIndex = logs.findIndex(log => log.id === updatedLog.id);
+      if (logIndex !== -1) {
+        logs[logIndex] = updatedLog;
+        const jsonValue = JSON.stringify(logs);
+        await AsyncStorage.setItem(STORAGE_KEY, jsonValue);
+      }
+    } catch (error) {
+      console.error('Error updating call log:', error);
+      throw error;
+    }
+  }
 };
